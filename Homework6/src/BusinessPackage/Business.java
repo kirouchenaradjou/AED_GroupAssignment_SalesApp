@@ -7,10 +7,52 @@ package BusinessPackage;
 
 /**
  *
- * @author ENVY
+ * @author ragha
  */
 public class Business {
-    
-    
-    
+
+    private SalesDirectory salesDirectory;
+    private CustomerDirectory customerDirectory;
+
+    private SupplierCatalog supplierCatalog;
+    private String name;
+
+    public Business(String n) {
+        salesDirectory = new SalesDirectory();
+        customerDirectory = new CustomerDirectory();
+        name = n;
+    }
+
+    public CustomerDirectory getCustomerDirectory() {
+        return customerDirectory;
+    }
+
+    public void setCustomerDirectory(CustomerDirectory customerDirectory) {
+        this.customerDirectory = customerDirectory;
+    }
+
+    public SupplierCatalog getSupplierCatalog() {
+        return supplierCatalog;
+    }
+
+    public void setSupplierCatalog(SupplierCatalog supplierCatalog) {
+        this.supplierCatalog = supplierCatalog;
+    }
+
+    public SalesDirectory getSalesDirectory() {
+        return salesDirectory;
+    }
+
+    public void setSalesDirectory(SalesDirectory salesDirectory) {
+        this.salesDirectory = salesDirectory;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

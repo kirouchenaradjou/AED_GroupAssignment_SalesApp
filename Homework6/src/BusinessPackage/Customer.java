@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business;
+package BusinessPackage;
 
 /**
  *
@@ -14,7 +14,15 @@ public class Customer {
     private String lastname;
     private String address;
     private int contactnumber;
-    //private Market market;
+    private Market market;
+
+    public Market getMarket() {
+        return market;
+    }
+
+    public void setMarket(Market market) {
+        this.market = market;
+    }
 
     public String getFirstname() {
         return firstname;

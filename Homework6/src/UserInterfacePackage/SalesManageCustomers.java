@@ -7,8 +7,10 @@ package UserInterfacePackage;
 
 import BusinessPackage.Business;
 import BusinessPackage.Customer;
+import BusinessPackage.Order;
 import BusinessPackage.Sales;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -22,8 +24,9 @@ public class SalesManageCustomers extends javax.swing.JPanel {
      */
     Business b;
     private JPanel userContainer;
-Sales sales;
-    public SalesManageCustomers(JPanel userContainer, Business b,Sales sales) {
+    Sales sales;
+
+    public SalesManageCustomers(JPanel userContainer, Business b, Sales sales) {
         initComponents();
         this.b = b;
         this.userContainer = userContainer;
@@ -48,107 +51,106 @@ Sales sales;
         btnreviewsaleorderhistory = new javax.swing.JButton();
         btnreviewsalescommission = new javax.swing.JButton();
         btnlogout = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 204, 204));
+        setBorder(new javax.swing.border.MatteBorder(null));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterfacePackage/x1.png"))); // NOI18N
         jLabel1.setText("Xerox Sales Console ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 16, 650, 170));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 40, 150, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Customer Name");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 250, 150, -1));
+        add(customerNameSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 250, 197, -1));
 
+        serveCustomerButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         serveCustomerButton.setText("Serve Customer <<");
         serveCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 serveCustomerButtonActionPerformed(evt);
             }
         });
+        add(serveCustomerButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 300, 320, -1));
 
+        btnreviewsaleorderhistory.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnreviewsaleorderhistory.setText("Review Sale Order History >>>");
         btnreviewsaleorderhistory.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnreviewsaleorderhistoryActionPerformed(evt);
             }
         });
+        add(btnreviewsaleorderhistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 320, -1));
 
+        btnreviewsalescommission.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnreviewsalescommission.setText("Review Sales Commission >>>");
         btnreviewsalescommission.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnreviewsalescommissionActionPerformed(evt);
             }
         });
+        add(btnreviewsalescommission, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 440, 320, -1));
 
+        btnlogout.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnlogout.setText("Logout");
+        add(btnlogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 100, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(477, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btnreviewsalescommission, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnreviewsaleorderhistory))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(249, 249, 249)
-                            .addComponent(btnlogout)))
-                    .addComponent(serveCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(179, 179, 179))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(53, 53, 53))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(48, 48, 48)
-                        .addComponent(customerNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(75, 75, 75)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(customerNameSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(serveCustomerButton)
-                .addGap(40, 40, 40)
-                .addComponent(btnreviewsaleorderhistory)
-                .addGap(48, 48, 48)
-                .addComponent(btnreviewsalescommission)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                .addComponent(btnlogout)
-                .addGap(233, 233, 233))
-        );
+        jButton1.setBackground(new java.awt.Color(255, 0, 102));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("Monitor Sales Performance");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void serveCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_serveCustomerButtonActionPerformed
         // TODO add your handling code here:
         Customer customer = b.getCustomerDirectory().findPersonByLastName(customerNameSearch.getText());
-         ServeCustomerJPanel serveCustomerJPanel = new ServeCustomerJPanel(userContainer,b,customer,sales);
-                userContainer.add("ServeCustomerJPanel",serveCustomerJPanel);
-                CardLayout cardLayout = (CardLayout) userContainer.getLayout();
-                cardLayout.next(userContainer);
+        if (customer != null) {
+            ServeCustomerJPanel serveCustomerJPanel = new ServeCustomerJPanel(userContainer, b, customer, sales);
+            userContainer.add("ServeCustomerJPanel", serveCustomerJPanel);
+            CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+            cardLayout.next(userContainer);
+        } else {
+            JOptionPane.showMessageDialog(null, "Customer isnt present in our DB ", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
     }//GEN-LAST:event_serveCustomerButtonActionPerformed
 
     private void btnreviewsaleorderhistoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreviewsaleorderhistoryActionPerformed
         // TODO add your handling code here:
+         SalesReviewOrderJPanel seReviewOrderJPanel = new SalesReviewOrderJPanel(userContainer, b, sales);
+            userContainer.add("SalesReviewOrderJPanel", seReviewOrderJPanel);
+            CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+            cardLayout.next(userContainer);
+      
     }//GEN-LAST:event_btnreviewsaleorderhistoryActionPerformed
 
     private void btnreviewsalescommissionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnreviewsalescommissionActionPerformed
         // TODO add your handling code here:
+          SalesCommisionReviewJPanel serCommisionReviewJPanel = new SalesCommisionReviewJPanel(userContainer, b, sales);
+            userContainer.add("SalesCommisionReviewJPanel", serCommisionReviewJPanel);
+            CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+            cardLayout.next(userContainer);
     }//GEN-LAST:event_btnreviewsalescommissionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         MonitorJPanel monitorJPanel = new MonitorJPanel(userContainer, b, sales);
+            userContainer.add("MonitorJPanel", monitorJPanel);
+            CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+            cardLayout.next(userContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -156,6 +158,7 @@ Sales sales;
     private javax.swing.JButton btnreviewsaleorderhistory;
     private javax.swing.JButton btnreviewsalescommission;
     private javax.swing.JTextField customerNameSearch;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

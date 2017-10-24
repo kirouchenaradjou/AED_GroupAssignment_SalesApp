@@ -10,7 +10,17 @@ package BusinessPackage;
  * @author ragha
  */
 public class Market {
+
     private String marketName;
+    private double revenue;
+
+    public double getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(double revenue) {
+        this.revenue = revenue;
+    }
 
     public String getMarketName() {
         return marketName;
@@ -19,5 +29,5 @@ public class Market {
     public void setMarketName(String marketName) {
         this.marketName = marketName;
     }
-    
+
 }

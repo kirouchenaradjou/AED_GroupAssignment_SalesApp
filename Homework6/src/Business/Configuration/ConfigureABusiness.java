@@ -62,7 +62,8 @@ public class ConfigureABusiness {
                 p.setpName(supplier_details[1]);
                 p.setPrice(Integer.parseInt(supplier_details[2]));
                 int toCalc = Integer.parseInt(supplier_details[2]);
-                int floor = toCalc - 10 + (int) (Math.random() * toCalc - 5);
+                int floor = Integer.parseInt(supplier_details[3]);
+                //int newFloor = (floor-2) + (int) (Math.random() * (floor + 5));
                 int ceil = toCalc + (int) (Math.random() * toCalc + 5);
 
                 p.setFloorPrice(floor);

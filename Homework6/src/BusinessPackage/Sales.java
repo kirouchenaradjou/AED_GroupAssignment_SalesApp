@@ -5,6 +5,8 @@
  */
 package BusinessPackage;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ragha
@@ -12,11 +14,39 @@ package BusinessPackage;
 public class Sales {
 
     private String userName;
+    private String firstName;
+    private String lastName;
     private String password;
     private CustomerDirectory customerDirectory;
     private double revenue;
-    private static int commision;
+    private static double commision =0.0;
     private double baseCompensation;
+    private ArrayList<Order> orderList;
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    
+    public ArrayList<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(ArrayList<Order> orderList) {
+        this.orderList = orderList;
+    }
 
     public double getBaseCompensation() {
         return baseCompensation;
@@ -25,20 +55,19 @@ public class Sales {
     public void setBaseCompensation(double baseCompensation) {
         this.baseCompensation = baseCompensation;
     }
-    
 
-    public Sales()
-    {
+    public Sales() {
         customerDirectory = new CustomerDirectory();
+        orderList = new ArrayList<Order>();
     }
-    public int getCommision() {
+
+    public double getCommision() {
         return commision;
     }
 
-    public void setCommision(int commision) {
+    public void setCommision(double commision) {
         this.commision = commision;
     }
-    
 
     public double getRevenue() {
         return revenue;

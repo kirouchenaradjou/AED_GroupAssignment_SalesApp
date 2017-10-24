@@ -8,6 +8,7 @@ package UserInterfacePackage;
 import BusinessPackage.Business;
 import BusinessPackage.Customer;
 import BusinessPackage.CustomerDirectory;
+import BusinessPackage.Market;
 import BusinessPackage.Order;
 import BusinessPackage.OrderItems;
 import BusinessPackage.Product;
@@ -36,10 +37,11 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
     Business b;
     private JPanel userContainer;
     private Customer customer;
-    Order order = new Order();
+    Order order;
     private static int actualTotla = 0;
     Sales sales;
     ArrayList<Order> orderArray = new ArrayList<Order>();
+    ArrayList<Market> marketArray = new ArrayList<Market>();
     private static double commison = 0;
 
     public SalesBookCustomerOrder(JPanel userContainer, Business b, Customer customer, Sales sales) {
@@ -49,8 +51,18 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
         this.customer = customer;
         this.sales = sales;
         populateSupplierName();
-        refreshOrderTable();
+       // refreshOrderTable();
         sales.setBaseCompensation(1000);
+        order = new Order();
+       popluateCustomerInfo();
+    }
+
+    public void popluateCustomerInfo() {
+        custName.setText(customer.getFirstname() + " " + customer.getLastname());
+        jLabel5.setText(customer.getAddress());
+        String marketName = customer.getMarket().getMarketName();
+        jLabel6.setText(marketName);
+        contactNum.setText(String.valueOf(customer.getContactnumber()));
     }
 
     public void populateSupplierName() {
@@ -104,6 +116,14 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
         submitButton = new javax.swing.JButton();
         jSpinner1 = new javax.swing.JSpinner();
         backButton = new javax.swing.JButton();
+        actualPriceText = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        custName = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        contactNum = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -112,7 +132,7 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 858, -1));
 
         jLabel2.setText("Activity: Book Customer Order");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
 
         tblprice.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,13 +157,13 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 561, 111));
 
-        addButton.setText("Add");
+        addButton.setText("Add To Cart");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
             }
         });
-        add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 380, -1, -1));
+        add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 430, -1, -1));
 
         comboboxcatalog.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -155,10 +175,10 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
                 comboboxcatalogActionPerformed(evt);
             }
         });
-        add(comboboxcatalog, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 240, -1));
+        add(comboboxcatalog, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 240, -1));
 
         jLabel3.setText("order items");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 490, -1, -1));
 
         tblorderitems.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -184,12 +204,12 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
                 txtmycommissionActionPerformed(evt);
             }
         });
-        add(txtmycommission, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 250, 130, -1));
+        add(txtmycommission, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 290, 330, -1));
 
         btncancel.setText("cancel");
         add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 670, -1, -1));
 
-        submitButton.setText("submit order");
+        submitButton.setText("Submit Order");
         submitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitButtonActionPerformed(evt);
@@ -205,6 +225,31 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
             }
         });
         add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 660, -1, -1));
+
+        actualPriceText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualPriceTextActionPerformed(evt);
+            }
+        });
+        add(actualPriceText, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 430, 130, -1));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 840, 160));
+
+        custName.setText("Customer Name");
+        add(custName, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 220, -1));
+
+        jLabel6.setText("jLabel6");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 210, -1));
+
+        contactNum.setText("jLabel8");
+        add(contactNum, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 70, -1, -1));
+
+        jLabel5.setText("jLabel5");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 850, 160));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        jLabel4.setText("Commission");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 260, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboboxcatalogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboboxcatalogActionPerformed
@@ -241,17 +286,28 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
         int selectedRows = tblprice.getSelectedRow();
+        int salesGiven = Integer.parseInt(actualPriceText.getText());
+        if (Integer.parseInt(jSpinner1.getValue().toString()) <= 0) {
+            JOptionPane.showMessageDialog(null, "Quantity cannot be less than or equal to zero", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
 
+        }
         if (selectedRows < 0) {
             JOptionPane.showMessageDialog(null, "Select any row from the table to add the product", "Warning", JOptionPane.WARNING_MESSAGE);
-
+            return;
         } else {
-            int actualPrice;
+            int actualPrice = 0;
             Product product = (Product) tblprice.getValueAt(selectedRows, 0);
             if (customer.getMarket().getMarketName().equalsIgnoreCase("Student")) {
-                actualPrice = product.getFloorPrice();
+                if (salesGiven > product.getPrice()) {
+                    JOptionPane.showMessageDialog(null, "Sales Price cannot be more than the Target Price ", "Warning", JOptionPane.WARNING_MESSAGE);
+                    return;
+                } else {
+                    actualPrice = salesGiven;
+                }
+
             } else {
-                actualPrice = product.getCeilPrice();
+                actualPrice = salesGiven;
             }
             actualTotla = actualTotla + product.getPrice() * Integer.parseInt(jSpinner1.getValue().toString());
             order.addOrderItem(product, Integer.parseInt(jSpinner1.getValue().toString()), actualPrice);
@@ -275,25 +331,38 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
-
+double newRevenue=0;
+double diff =0.0;
         if (actualTotla > order.getOrderTotel()) {
-            double diff = actualTotla - order.getOrderTotel();
-            commison = Math.round(commison + (diff *(0.1)));
-            txtmycommission.setText(String.valueOf(commison));
-            double newRevenue = sales.getBaseCompensation() + commison;
+             diff = actualTotla- order.getOrderTotel();
+            txtmycommission.setText("No Commision Loss of" + diff);
+            diff = diff + diff * (10 / 100);
+            sales.setCommision(0.0);
+             newRevenue = newRevenue + sales.getBaseCompensation() - diff;
             sales.setBaseCompensation(newRevenue);
+            sales.setRevenue(newRevenue);
         } else {
-             double diff = order.getOrderTotel() - actualTotla ;
-             txtmycommission.setText("No Commision Loss of"+diff);
-             diff = diff + diff*(10/100);
-         double newRevenue = sales.getBaseCompensation() - diff;
+            
+             diff=order.getOrderTotel()- actualTotla ;
+            commison = Math.round((commison + (diff * (0.1))*100));
+            txtmycommission.setText(String.valueOf(commison));
+             newRevenue = newRevenue + sales.getBaseCompensation() + commison;
+            sales.setCommision(commison);
             sales.setBaseCompensation(newRevenue);
+            sales.setRevenue(newRevenue);
         }
-        
+
         CustomerDirectory cusDir = sales.getCustomerDirectory();
         cusDir.addUser(customer);
         orderArray.add(order);
         customer.setOrderList(orderArray);
+        //set the revenue per market
+       String marketName =customer.getMarket().getMarketName();
+      Market mFound = b.getMarketList().searchByName(marketName);
+      if(mFound!=null)
+      {
+          mFound.setRevenue(diff);
+      }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -304,16 +373,28 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
         layout.previous(userContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void actualPriceTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualPriceTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_actualPriceTextActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField actualPriceText;
     private javax.swing.JButton addButton;
     private javax.swing.JButton backButton;
     private javax.swing.JButton btncancel;
     private javax.swing.JComboBox<Object> comboboxcatalog;
+    private javax.swing.JLabel contactNum;
+    private javax.swing.JLabel custName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JButton submitButton;
     private javax.swing.JTable tblorderitems;

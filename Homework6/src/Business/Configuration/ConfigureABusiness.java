@@ -46,6 +46,8 @@ public class ConfigureABusiness {
 
                 sd.setUserName(username);
                 sd.setPassword(password);
+                sd.setFirstName(userDetails[2]);
+                sd.setLastName(userDetails[3]);
 
             }
             br_supp = new BufferedReader(new FileReader("supplier.csv"));

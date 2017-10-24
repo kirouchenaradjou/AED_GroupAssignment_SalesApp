@@ -46,6 +46,8 @@ public class MonitorJPanel extends javax.swing.JPanel {
         comboForMoniotring = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableForMarket = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableForSales = new javax.swing.JTable();
 
         setForeground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,6 +87,29 @@ public class MonitorJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tableForMarket);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, 110));
+
+        tableForSales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Sales Person Name", "Revenue"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableForSales);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 360, -1, 160));
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboForMoniotringItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboForMoniotringItemStateChanged
@@ -107,6 +132,25 @@ public class MonitorJPanel extends javax.swing.JPanel {
             }
         }
         }
+        if(comboForMoniotring.getSelectedIndex()==0)
+        {
+            
+        }
+        if(comboForMoniotring.getSelectedIndex()==2)
+        {
+                        tableForMarket.setVisible(false);
+
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableForSales.getModel();
+        defaultTableModel.setRowCount(0);
+            for(Sales salePerson : b.getSalesDirectory().getUserAccountDir())
+            {
+                 Object[] row = new Object[2];
+                row[0] = salePerson.getFirstName();
+                row[1] = salePerson.getRevenue();
+               
+                defaultTableModel.addRow(row);
+            }
+        }
     }//GEN-LAST:event_comboForMoniotringItemStateChanged
 
     private void comboForMoniotringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboForMoniotringActionPerformed
@@ -118,6 +162,8 @@ public class MonitorJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboForMoniotring;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableForMarket;
+    private javax.swing.JTable tableForSales;
     // End of variables declaration//GEN-END:variables
 }

@@ -38,17 +38,15 @@ public class SalesCommisionReviewJPanel extends javax.swing.JPanel {
     public void populateTable() {
           DefaultTableModel defaultTableModel = (DefaultTableModel) tableComiision.getModel();
         defaultTableModel.setRowCount(0);
-        for (Customer cust : sales.getCustomerDirectory().getCustomerlist()) {
-            for (Order oi : cust.getOrderList()) {
-                Object[] row = new Object[3];
-                row[0] = cust.getFirstname()+" "+cust.getLastname();
-                row[1] = oi.getOrderID();
-                row[2] = sales.getCommision();
+                Object[] row = new Object[2];
+                row[0] = sales.getFirstName();
+                
+                row[1] = sales.getCommision();
 
                 defaultTableModel.addRow(row);
 
-            }
-        }
+  
+        
     }
 
     
@@ -69,17 +67,17 @@ public class SalesCommisionReviewJPanel extends javax.swing.JPanel {
 
         tableComiision.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Customer Managed", "Order ID", "Commission", "Commission Amount"
+                "Sales Name", "Commission"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

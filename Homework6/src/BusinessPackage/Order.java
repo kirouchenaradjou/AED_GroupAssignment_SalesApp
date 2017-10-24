@@ -19,11 +19,21 @@ public class Order {
     private String orderStatus;
     private int orderID;
     public static int count =0;
-
     public Order() {
         orderList= new ArrayList<OrderItems>();
         count ++;
         orderID = count;
+    }
+    public double getOrderTotel()
+    {
+        double sum =0;
+
+        for(OrderItems o :orderList)
+        {
+            sum = sum + o.getOrderItem();
+
+        }
+        return sum;
     }
 
     public ArrayList<OrderItems> getOrderList() {

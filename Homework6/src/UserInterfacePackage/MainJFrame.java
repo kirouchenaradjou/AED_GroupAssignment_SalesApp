@@ -124,7 +124,7 @@ public class MainJFrame extends javax.swing.JFrame {
         }
         else
         {
-          SalesManageCustomers salesManageCustomers = new SalesManageCustomers();
+          SalesManageCustomers salesManageCustomers = new SalesManageCustomers(userContainer,business,isValid);
                 userContainer.add("SalesManageCustomers",salesManageCustomers);
                 CardLayout cardLayout = (CardLayout) userContainer.getLayout();
                 cardLayout.next(userContainer);

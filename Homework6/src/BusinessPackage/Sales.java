@@ -10,9 +10,43 @@ package BusinessPackage;
  * @author ragha
  */
 public class Sales {
+
     private String userName;
     private String password;
     private CustomerDirectory customerDirectory;
+    private double revenue;
+    private static int commision;
+    private double baseCompensation;
+
+    public double getBaseCompensation() {
+        return baseCompensation;
+    }
+
+    public void setBaseCompensation(double baseCompensation) {
+        this.baseCompensation = baseCompensation;
+    }
+    
+
+    public Sales()
+    {
+        customerDirectory = new CustomerDirectory();
+    }
+    public int getCommision() {
+        return commision;
+    }
+
+    public void setCommision(int commision) {
+        this.commision = commision;
+    }
+    
+
+    public double getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(double revenue) {
+        this.revenue = revenue;
+    }
 
     public String getUserName() {
         return userName;
@@ -37,5 +71,5 @@ public class Sales {
     public void setCustomerDirectory(CustomerDirectory customerDirectory) {
         this.customerDirectory = customerDirectory;
     }
-    
+
 }

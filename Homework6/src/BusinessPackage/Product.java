@@ -16,6 +16,34 @@ public class Product {
     private int price;
     private int modelNum;
     private int availability ;
+    private int floorPrice;
+    private int ceilPrice;
+    
+
+    public static int getCount() {
+        return count;
+    }
+
+    public static void setCount(int count) {
+        Product.count = count;
+    }
+
+    public int getFloorPrice() {
+        return floorPrice;
+    }
+
+    public void setFloorPrice(int floorPrice) {
+        this.floorPrice = floorPrice;
+    }
+
+    public int getCeilPrice() {
+        return ceilPrice;
+    }
+
+    public void setCeilPrice(int ceilPrice) {
+        this.ceilPrice = ceilPrice;
+    }
+    
     public Product()
     {
         count++;

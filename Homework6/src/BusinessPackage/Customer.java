@@ -5,6 +5,8 @@
  */
 package BusinessPackage;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author yash
@@ -15,6 +17,20 @@ public class Customer {
     private String address;
     private int contactnumber;
     private Market market;
+private ArrayList<Order> orderList;
+
+    public Customer() {
+        orderList = new ArrayList<Order>();
+    }
+
+    public ArrayList<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(ArrayList<Order> orderList) {
+        this.orderList = orderList;
+    }
+
 
     public Market getMarket() {
         return market;
@@ -56,13 +72,7 @@ public class Customer {
         this.contactnumber = contactnumber;
     }
 
-    /*public Market getMarket() {
-        return market;
-    }
-
-    public void setMarket(Market market) {
-        this.market = market;
-    }*/
+  
     
     
 }

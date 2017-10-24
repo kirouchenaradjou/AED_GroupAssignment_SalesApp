@@ -10,12 +10,17 @@ package BusinessPackage;
  * @author ragha
  */
 public class OrderItems {
+
     private Product product;
     private int quantity;
     private double actualPrice;
 
     public Product getProduct() {
         return product;
+    }
+
+    public double getOrderItem() {
+        return getQuantity() * getActualPrice();
     }
 
     public void setProduct(Product product) {
@@ -37,9 +42,9 @@ public class OrderItems {
     public void setActualPrice(double actualPrice) {
         this.actualPrice = actualPrice;
     }
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return product.getpName();
     }
 }

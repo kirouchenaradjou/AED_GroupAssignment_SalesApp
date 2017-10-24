@@ -17,7 +17,7 @@ public class MarketList {
     public MarketList() {
         marketList =new ArrayList<Market>();
     }
-    private Market addMarket()
+    public Market addMarket()
     {
         Market market = new Market();
         marketList.add(market);

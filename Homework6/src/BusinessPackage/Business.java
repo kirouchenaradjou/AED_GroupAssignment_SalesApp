@@ -13,14 +13,24 @@ public class Business {
 
     private SalesDirectory salesDirectory;
     private CustomerDirectory customerDirectory;
-
+private MarketList marketList;
     private SupplierCatalog supplierCatalog;
     private String name;
 
     public Business(String n) {
         salesDirectory = new SalesDirectory();
         customerDirectory = new CustomerDirectory();
+        supplierCatalog = new SupplierCatalog();
+        marketList = new MarketList();
         name = n;
+    }
+
+    public MarketList getMarketList() {
+        return marketList;
+    }
+
+    public void setMarketList(MarketList marketList) {
+        this.marketList = marketList;
     }
 
     public CustomerDirectory getCustomerDirectory() {

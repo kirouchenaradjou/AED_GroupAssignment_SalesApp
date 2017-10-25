@@ -31,7 +31,17 @@ public class SalesDirectory {
         salesDir.add(su);
         return su;
     }
-  
+  public Sales search(double value)
+  {
+     for(Sales ua: salesDir)
+        {
+            if(ua.getRevenue()==value)
+            {
+                return ua;
+            }
+        }  
+     return null;
+  }
     public Sales isValidUser(String userName, String password)
     {
         for(Sales ua: salesDir)

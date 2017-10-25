@@ -13,9 +13,18 @@ public class Business {
 
     private SalesDirectory salesDirectory;
     private CustomerDirectory customerDirectory;
-private MarketList marketList;
+    private MarketList marketList;
     private SupplierCatalog supplierCatalog;
     private String name;
+    private int revenue;
+
+    public int getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(int revenue) {
+        this.revenue = revenue;
+    }
 
     public Business(String n) {
         salesDirectory = new SalesDirectory();

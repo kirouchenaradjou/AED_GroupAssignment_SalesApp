@@ -18,6 +18,15 @@ public class Product {
     private int availability ;
     private int floorPrice;
     private int ceilPrice;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     
 
     public static int getCount() {

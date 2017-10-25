@@ -1,25 +1,25 @@
-Supplier 1,Printer,20,18
-Supplier 2,Printer,25,20
-Supplier 1,Eraser,52,45
-Supplier 2,Eraser,40,35
-Supplier 1,Stapler,30,20
-Supplier 1,Clip,50,45
-Supplier 1,Sticky Notes,50,35
-Supplier 1,Laser,300,250
-Supplier 1,Pen,45,34
-Supplier 1,Pencil,32,10
-Supplier 1,Colors,34,22
-Supplier 1,A4,39,29
-Supplier 1,Bag,60,67
-Supplier 1,Pouch,40,35
-Supplier 1,NoteBook,35,21
-Supplier 2,Clip,71,65
-Supplier 2,Sticky Notes,60,40
-Supplier 2,Laser,400,300
-Supplier 2,Pen,20,10
-Supplier 2,Pencil,25,21
-Supplier 2,Colors,38,30
-Supplier 2,A4,25,20
-Supplier 2,Bag,65,60
-Supplier 2,Pouch,45,40
-Supplier 2,NoteBook,40,34
+Supplier 1,Printer,20,18,the printer
+Supplier 2,Printer,25,20,the printer
+Supplier 1,Eraser,52,45,the eraser
+Supplier 2,Eraser,40,35,the eraser
+Supplier 1,Stapler,30,20,the stapler
+Supplier 1,Clip,50,45,the clip
+Supplier 1,Sticky Notes,50,35,the sticky notes
+Supplier 1,Laser,300,250,the laser
+Supplier 1,Pen,45,34,the pen
+Supplier 1,Pencil,32,10,the pencil
+Supplier 1,Colors,34,22,the colours
+Supplier 1,A4,39,29,the a4
+Supplier 1,Bag,60,67,the bag
+Supplier 1,Pouch,40,35,the pouch
+Supplier 1,NoteBook,35,21,the note book
+Supplier 2,Clip,71,65,the clip
+Supplier 2,Sticky Notes,60,40,the sticky notes
+Supplier 2,Laser,400,300,the laser
+Supplier 2,Pen,20,10,the pen
+Supplier 2,Pencil,25,21,the pencil
+Supplier 2,Colors,38,30,the colours
+Supplier 2,A4,25,20,the a4
+Supplier 2,Bag,65,60,the bag
+Supplier 2,Pouch,45,40,the pouch
+Supplier 2,NoteBook,40,34,the note book

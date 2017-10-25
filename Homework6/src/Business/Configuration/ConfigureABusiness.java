@@ -63,11 +63,13 @@ public class ConfigureABusiness {
                 p.setPrice(Integer.parseInt(supplier_details[2]));
                 int toCalc = Integer.parseInt(supplier_details[2]);
                 int floor = Integer.parseInt(supplier_details[3]);
+                String description = supplier_details[4];
                 //int newFloor = (floor-2) + (int) (Math.random() * (floor + 5));
                 int ceil = toCalc + (int) (Math.random() * toCalc + 5);
 
                 p.setFloorPrice(floor);
                 p.setCeilPrice(ceil);
+                p.setDescription(description);
                 }
                 else
                 {
@@ -82,6 +84,8 @@ public class ConfigureABusiness {
 
                 p.setFloorPrice(floor);
                 p.setCeilPrice(ceil);
+               
+                
                 }
 
             }

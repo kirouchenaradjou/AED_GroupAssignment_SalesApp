@@ -70,6 +70,7 @@ public class ConfigureABusiness {
 
                 p.setFloorPrice(floor);
                 p.setCeilPrice(ceil);
+                p.setDescription(supplier_details[4]);
                 }
                 else
                 {

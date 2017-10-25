@@ -159,6 +159,10 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
 
     private void btnBrowseCatalogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseCatalogActionPerformed
         // TODO add your handling code here:
+        SalesProductCatalog spc = new SalesProductCatalog(userContainer, b, customer);
+        userContainer.add("SalesProductCatalog", spc);
+        CardLayout cardLayout = (CardLayout) userContainer.getLayout();
+        cardLayout.next(userContainer); 
     }//GEN-LAST:event_btnBrowseCatalogActionPerformed
 
     private void btnViewCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCustActionPerformed

@@ -11,14 +11,23 @@ package BusinessPackage;
  */
 public class Product {
 
-    private static int count =0;
+    private static int count = 0;
     private String pName;
     private int price;
     private int modelNum;
-    private int availability ;
+    private int availability;
     private int floorPrice;
     private int ceilPrice;
-    
+
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public static int getCount() {
         return count;
@@ -43,9 +52,8 @@ public class Product {
     public void setCeilPrice(int ceilPrice) {
         this.ceilPrice = ceilPrice;
     }
-    
-    public Product()
-    {
+
+    public Product() {
         count++;
         modelNum = count;
     }
@@ -81,10 +89,9 @@ public class Product {
     public void setModelNum(int modelNum) {
         this.modelNum = modelNum;
     }
-    
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return pName;
     }
 }

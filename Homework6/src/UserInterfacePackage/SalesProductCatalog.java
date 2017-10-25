@@ -3,7 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface;
+package UserInterfacePackage;
+
+import BusinessPackage.Business;
+import BusinessPackage.Customer;
+import BusinessPackage.Product;
+import BusinessPackage.Supplier;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,8 +22,23 @@ public class SalesProductCatalog extends javax.swing.JPanel {
     /**
      * Creates new form SalesProductCatalog
      */
-    public SalesProductCatalog() {
+    private JPanel userContainer;
+    private Customer customer;
+    private Business b;
+    private Supplier supplier;
+    
+    
+    
+    
+    public SalesProductCatalog( JPanel userContainer, Business b, Customer customer) {
         initComponents();
+        this.userContainer = userContainer;
+        this.customer= customer;
+        this.b = b;
+        
+        populateSupplierName();
+                
+                
     }
 
     /**
@@ -71,7 +94,7 @@ public class SalesProductCatalog extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ProductID", "ProductName", "Targetprice", "Description"
+                "ProductName", "ProductID", "Targetprice", "Description"
             }
         ));
         jScrollPane1.setViewportView(tblsalesproductcatalog);
@@ -81,7 +104,11 @@ public class SalesProductCatalog extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 940, 240));
 
-        comboboxcatalog.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboboxcatalog.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboboxcatalogItemStateChanged(evt);
+            }
+        });
         comboboxcatalog.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboboxcatalogActionPerformed(evt);
@@ -93,6 +120,15 @@ public class SalesProductCatalog extends javax.swing.JPanel {
         add(btnnext, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 550, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+      public void populateSupplierName() {
+        for (Supplier supplier : b.getSupplierCatalog().getSupplierDirectory()) {
+
+            comboboxcatalog.addItem(supplier);
+            
+
+        }
+
+    }
     private void txtfindproductnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfindproductnameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfindproductnameActionPerformed
@@ -102,13 +138,66 @@ public class SalesProductCatalog extends javax.swing.JPanel {
     }//GEN-LAST:event_comboboxcatalogActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
+        DefaultTableModel dtm=(DefaultTableModel) tblsalesproductcatalog.getModel();
+        dtm.setRowCount(0);
+        //System.out.println("UserInterface.ManageAirlines.ManageAirlinersWorkAreaJPanel.populateAirlinerTable()");
+       // System.out.println("travel"+travelAgency.getAirlineDirectory());
+       
+        for(Supplier sup : b.getSupplierCatalog().getSupplierDirectory())
+        {
+            for(Product p : sup.getProductCatalog().getProductList())
+            {
+                if(p.getpName().equals(txtfindproductname.getText()))
+                {
+                    Object[] row=new Object[5];
+            row[0]= p;
+            //row[1]=a.getSerialNumber();
+            row[1]=p.getModelNum();
+            row[2]=p.getPrice();
+            row[3]=p.getDescription();
+            dtm.addRow(row);
+                }
+            }
+        }
+           
+            
+       if(dtm.getRowCount()<1)
+           {
+               JOptionPane.showMessageDialog(null,"No data Available for the entered details");
+           }
+            
+            
+        
+                         
+        
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void comboboxcatalogItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboboxcatalogItemStateChanged
+  DefaultTableModel defaultTableModel = (DefaultTableModel) tblsalesproductcatalog.getModel();
+        defaultTableModel.setRowCount(0);
+        Supplier sup = (Supplier) comboboxcatalog.getSelectedItem();
+        for (Product p : sup.getProductCatalog().getProductList()) {
+            {
+
+                Object[] row = new Object[4];
+                row[0] = p;
+                row[1] = p.getModelNum();
+                row[2] = p.getPrice();
+                row[3]= p.getDescription();
+
+                defaultTableModel.addRow(row);
+
+            }
+        }
+    }//GEN-LAST:event_comboboxcatalogItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnnext;
-    private javax.swing.JComboBox<String> comboboxcatalog;
+    private javax.swing.JComboBox<Object> comboboxcatalog;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

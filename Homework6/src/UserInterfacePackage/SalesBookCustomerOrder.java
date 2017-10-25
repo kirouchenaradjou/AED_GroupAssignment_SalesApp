@@ -38,7 +38,7 @@ public class SalesBookCustomerOrder extends javax.swing.JPanel {
     private JPanel userContainer;
     private Customer customer;
     Order order;
-    private static int actualTotla = 0;
+    private  int actualTotla = 0;
     Sales sales;
     ArrayList<Order> orderArray = new ArrayList<Order>();
     ArrayList<Market> marketArray = new ArrayList<Market>();
@@ -341,6 +341,7 @@ double diff =0.0;
              newRevenue = newRevenue + sales.getBaseCompensation() - diff;
             sales.setBaseCompensation(newRevenue);
             sales.setRevenue(newRevenue);
+            
         } else {
             
              diff=order.getOrderTotel()- actualTotla ;
@@ -350,19 +351,19 @@ double diff =0.0;
             sales.setCommision(commison);
             sales.setBaseCompensation(newRevenue);
             sales.setRevenue(newRevenue);
+            String marketName =customer.getMarket().getMarketName();
+      Market mFound = b.getMarketList().searchByName(marketName);
+      if(mFound!=null)
+      {
+          mFound.setRevenue(diff);
+      }
         }
 
         CustomerDirectory cusDir = sales.getCustomerDirectory();
         cusDir.addUser(customer);
         orderArray.add(order);
         customer.setOrderList(orderArray);
-        //set the revenue per market
-       String marketName =customer.getMarket().getMarketName();
-      Market mFound = b.getMarketList().searchByName(marketName);
-      if(mFound!=null)
-      {
-          mFound.setRevenue(diff);
-      }
+       
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

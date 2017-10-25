@@ -9,7 +9,6 @@ import BusinessPackage.Business;
 import BusinessPackage.Customer;
 import BusinessPackage.Order;
 import BusinessPackage.Sales;
-import UserInterfacePackage.SalesProductCatalog;
 import UserInterfacePackage.Customer.CustomerViewJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -159,10 +158,7 @@ public class ServeCustomerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCheckOrderActionPerformed
 
     private void btnBrowseCatalogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseCatalogActionPerformed
- SalesProductCatalog spc = new SalesProductCatalog(userContainer, b, customer);
-        userContainer.add("SalesProductCatalog", spc);
-        CardLayout cardLayout = (CardLayout) userContainer.getLayout();
-        cardLayout.next(userContainer);      
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnBrowseCatalogActionPerformed
 
     private void btnViewCustActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewCustActionPerformed

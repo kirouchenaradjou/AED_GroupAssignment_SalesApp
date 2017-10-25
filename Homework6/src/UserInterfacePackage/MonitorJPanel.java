@@ -8,6 +8,10 @@ package UserInterfacePackage;
 import BusinessPackage.Business;
 import BusinessPackage.Market;
 import BusinessPackage.Sales;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -46,6 +50,11 @@ public class MonitorJPanel extends javax.swing.JPanel {
         comboForMoniotring = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableForMarket = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableForSales = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        backButton = new javax.swing.JButton();
 
         setForeground(new java.awt.Color(204, 204, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -84,40 +93,142 @@ public class MonitorJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tableForMarket);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 110));
+
+        tableForSales.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Sales Person Name", "Revenue"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(tableForSales);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, 160));
+
+        jScrollPane3.setViewportView(jList1);
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, -1, -1));
+
+        backButton.setText("Back >>");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 650, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboForMoniotringItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboForMoniotringItemStateChanged
         // TODO add your handling code here:
-        if(comboForMoniotring.getSelectedIndex()==1)
-        {
+        if (comboForMoniotring.getSelectedIndex() == 1) {
             tableForMarket.setVisible(true);
-             DefaultTableModel defaultTableModel = (DefaultTableModel) tableForMarket.getModel();
-        defaultTableModel.setRowCount(0);
-        
-        for (Market market : b.getMarketList().getMarketList()) {
-            {
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableForMarket.getModel();
+            defaultTableModel.setRowCount(0);
 
-                Object[] row = new Object[2];
-                row[0] = market.getMarketName();
-                row[1] = market.getRevenue();
-               
-                defaultTableModel.addRow(row);
+            for (Market market : b.getMarketList().getMarketList()) {
+                {
 
+                    Object[] row = new Object[2];
+                    row[0] = market.getMarketName();
+                    row[1] = market.getRevenue();
+
+                    defaultTableModel.addRow(row);
+
+                }
             }
         }
+        if (comboForMoniotring.getSelectedIndex() == 3) {
+tableForSales.setAutoCreateRowSorter(true);
+            tableForMarket.setVisible(false);
+           
+           DefaultTableModel defaultTableModel = (DefaultTableModel) tableForSales.getModel();
+            defaultTableModel.setRowCount(0);
+            for (Sales salePerson : b.getSalesDirectory().getUserAccountDir()) {
+                if(salePerson.getRevenue()>1000)
+                {
+                 Object[] row = new Object[2];
+                row[0] = salePerson.getFirstName();
+                row[1] = salePerson.getRevenue();
+                defaultTableModel.addRow(row);
+            }
+           
+            
+           
+            }
         }
+        if (comboForMoniotring.getSelectedIndex() == 4) {
+            tableForMarket.setVisible(false);
+                      ArrayList<String> sales1 = new ArrayList<String>();
+
+             DefaultTableModel defaultTableModel = (DefaultTableModel) tableForSales.getModel();
+            defaultTableModel.setRowCount(0);
+            for (Sales salePerson : b.getSalesDirectory().getUserAccountDir()) {
+                if(salePerson.getRevenue()<1000)
+                {
+                     sales1.add(salePerson.getFirstName());
+                 Object[] row = new Object[2];
+                row[0] = salePerson.getFirstName();
+                row[1] = salePerson.getRevenue();
+                defaultTableModel.addRow(row);
+            }
+           
+            }
+       
+        }
+        if (comboForMoniotring.getSelectedIndex() == 2) {
+            tableForSales.setAutoCreateRowSorter(true);
+            
+            tableForMarket.setVisible(false);
+            DefaultTableModel defaultTableModel = (DefaultTableModel) tableForSales.getModel();
+            defaultTableModel.setRowCount(0);
+            for (Sales salePerson : b.getSalesDirectory().getUserAccountDir()) {
+                Object[] row = new Object[2];
+                row[0] = salePerson.getFirstName();
+                row[1] = salePerson.getRevenue();
+                defaultTableModel.addRow(row);
+            }
+           
+        }
+         if (comboForMoniotring.getSelectedIndex() == 0) {
+             
+         }
     }//GEN-LAST:event_comboForMoniotringItemStateChanged
 
     private void comboForMoniotringActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboForMoniotringActionPerformed
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_comboForMoniotringActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        userContainer.remove(this);
+
+        CardLayout layout = (CardLayout) userContainer.getLayout();
+        layout.previous(userContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backButton;
     private javax.swing.JComboBox<String> comboForMoniotring;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tableForMarket;
+    private javax.swing.JTable tableForSales;
     // End of variables declaration//GEN-END:variables
 }
